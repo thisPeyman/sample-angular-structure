@@ -10,7 +10,7 @@ export const shellRoutes: Route[] = [
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('src/app/dashboard/dashboard.module').then(
+          import('src/app/dashboard/feature/dashboard.module').then(
             (m) => m.DashboardModule
           ),
       },
