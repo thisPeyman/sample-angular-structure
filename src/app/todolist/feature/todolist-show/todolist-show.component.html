@@ -1,5 +1,5 @@
-<p>todolist-show works!</p>
-<div *ngFor="let todo of todos$ | async">
-    {{ todo | json }}
-</div>
-<button (click)="test()">add test todo</button>
+<ng-container *ngIf="vm$ | async as vm">
+  <app-insert-todo (newTodo)="onNewTodo($event)"></app-insert-todo>
+
+  <app-todolist-table [todoData]="vm.todos"></app-todolist-table
+></ng-container>

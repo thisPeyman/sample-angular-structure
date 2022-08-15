@@ -1,0 +1,19 @@
+.todo-container {
+  padding: 10px;
+  text-align: center;
+
+  mat-form-field {
+    width: 15%;
+  }
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    margin-bottom: 15px;
+    margin-left: 25px;
+  }
+}

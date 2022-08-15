@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-
-interface Todo {
-  title: string;
-  isDone: boolean;
-  id: number;
-}
+import { Todo } from '../models/todo';
 
 interface TodoState {
   todos: Todo[];
@@ -13,11 +8,13 @@ interface TodoState {
 
 @Injectable()
 export class TodolistStore extends ComponentStore<TodoState> {
+  
+  readonly todos$ = this.select((state) => state.todos);
+  readonly vm$ = this.select(this.todos$, (todos) => ({ todos }));
+  
   constructor() {
     super({ todos: [{ title: 'go home', isDone: false, id: 10 }] });
   }
-
-  readonly todos$ = this.select((state) => state.todos);
 
   readonly doneTodos$ = this.select(this.todos$, (todos) =>
     todos.filter((todo) => todo.isDone)
@@ -32,4 +29,5 @@ export class TodolistStore extends ComponentStore<TodoState> {
     ...state,
     todos: [...state.todos.filter((t) => t.id !== id)],
   }));
+
 }

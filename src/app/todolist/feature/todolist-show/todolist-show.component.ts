@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Todo } from '../../data-access/models/todo';
 import { TodolistStore } from '../../data-access/store/todolist.store';
 
 @Component({
@@ -8,13 +9,13 @@ import { TodolistStore } from '../../data-access/store/todolist.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodolistShowComponent implements OnInit {
-  todos$ = this.todolistStore.todos$;
+  vm$ = this.todolistStore.vm$;
 
   constructor(private todolistStore: TodolistStore) {}
 
   ngOnInit(): void {}
 
-  test() {
-    this.todolistStore.addTodo({ id: 20, title: 'my nice todo', isDone: true });
+  onNewTodo(newTodo: Todo): void {
+    this.todolistStore.addTodo(newTodo);
   }
 }

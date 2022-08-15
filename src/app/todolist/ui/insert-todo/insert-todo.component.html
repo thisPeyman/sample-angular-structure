@@ -1,0 +1,9 @@
+<div class="todo-container">
+  <form [formGroup]="addForm" (ngSubmit)="onFormSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Todo Title</mat-label>
+      <input formControlName="title" matInput placeholder="Go to the gym" />
+    </mat-form-field>
+    <button mat-raised-button color="accent">Add Task</button>
+  </form>
+</div>
